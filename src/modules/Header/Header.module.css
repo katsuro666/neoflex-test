@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  color: #101010;
+  margin: 0;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+.list_item {
+  padding: 20px;
+}
