@@ -22,3 +22,25 @@
 .list_item {
   padding: 20px;
 }
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #FFA542;
+  color: #FFFFFF;
+  width: 16px;
+  height: 18px;
+  border-radius: 50%;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.cartBtn {
+  position: relative;
+  padding: 0;
+  border-style: none;
+  cursor: pointer;
+}

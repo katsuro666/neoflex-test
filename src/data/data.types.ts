@@ -4,5 +4,6 @@ export type DataItem = {
   price: number,
   oldPrice?: number
   currency: string,
-  rate: number
+  rate: number,
+  id: number
 }

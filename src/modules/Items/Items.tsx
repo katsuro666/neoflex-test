@@ -10,7 +10,7 @@ export function Items() {
         <h2 className={styles.header}>Наушники</h2> 
         <div className={styles.items}>
           {headphones.map((item, index) => (
-            <Item key={index} item={item} />
+            <Item key={index} item={item}/>
           ))}
         </div>
       </section>
@@ -19,7 +19,7 @@ export function Items() {
         <h2 className={styles.header}>Беспроводные наушники</h2> 
         <div className={styles.items}>
           {wirelessHeadphones.map((item, index) => (
-            <Item key={index} item={item} />
+            <Item key={index} item={item}/>
           ))}
         </div>
       </section>
