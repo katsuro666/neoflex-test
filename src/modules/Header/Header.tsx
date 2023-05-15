@@ -1,3 +1,4 @@
+import { Logo } from 'components'
 import React from 'react'
 import styles from './Header.module.css'
 
@@ -5,7 +6,7 @@ import styles from './Header.module.css'
 export function Header() {
   return (
     <header className={styles.header}>
-    <h1 className={styles.logo}>QPICK</h1>
+    <Logo />
     <ul className={styles.list}>
       <li className={styles.list_item}>
         <img width='22' height='20' src='/assets/icons/heart.svg' alt="Favorites" />

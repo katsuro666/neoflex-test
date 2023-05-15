@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 30px 30px 0px 0px;
+  padding: 30px;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 21px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list > * {
+  margin-bottom: 11px;
+}
+
+.terms {
+  margin: 0 auto 27px;
+  text-align: center;
+}
+
+.lang {
+  display: flex;
+}
+
+.lang > * {
+  margin: 0 18px 0 0;
+}
+
+.lang > *:last-child {
+  margin: 0;
+}
+
+.currentLang {
+  font-weight: 700;
+  color: #FFA542;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  max-height: 35px;
+}
+
+.socials > * {
+  margin: 0 0 0 18px;
+}
