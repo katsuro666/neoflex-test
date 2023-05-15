@@ -12,6 +12,12 @@
   line-height: 21px;
 }
 
+.item:hover {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  scale: 1.03;
+  transition: all 0.2s ease-in-out;
+}
+
 .img {
   max-width: 220px;
   max-height: 237px;
