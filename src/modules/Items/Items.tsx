@@ -1,7 +1,7 @@
 import React from 'react'
 import { headphones, wirelessHeadphones } from '../../data';
 import styles from './Items.module.css';
-import { Item } from 'modules/Item/index';
+import { Item } from 'modules/Items/components/Item/index';
 
 export function Items() {
   return (

@@ -1,4 +1,5 @@
 export * from './Header';
 export * from './Items';
-export * from './Item';
+export * from './Items/components/Item';
 export * from './Footer';
+export * from './CartSection';
