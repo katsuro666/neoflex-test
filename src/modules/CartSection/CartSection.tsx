@@ -1,9 +1,10 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 import { CartStoreInstance } from 'store'
 import styles from './CartSection.module.css'
 import { CartItem } from './components/CartItem'
 
-export function CartSection() {
+export function CartSectionProto() {
 
   const { cartArray } = CartStoreInstance
 
@@ -39,14 +40,9 @@ export function CartSection() {
           ) : (
             <p className={styles.emptyCart}>Корзина пуста</p>
           )}
-          {/* <div className={styles.checkout}>
-            <div className={styles.total}>
-              <p>Итого</p>
-              <p>Сумма</p>
-            </div>
-            <button className={styles.button}>Перейти к оформлению</button>
-          </div> */}
       </div>
     </>
   )
 }
+
+export const CartSection = observer(CartSectionProto)

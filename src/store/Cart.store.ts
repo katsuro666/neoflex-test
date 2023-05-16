@@ -13,7 +13,7 @@ export class CartStore {
     return this._cart;
   }
 
-  addToCart(item: DataItem) {
+  addToCart = (item: DataItem) => {
     let duplicate = this._cart.find((cartItem) => cartItem.product.id === item.id);
     if (duplicate) {
       duplicate.quantity += 1
@@ -25,6 +25,11 @@ export class CartStore {
       }
     })
     }
+    sessionStorage.setItem('cart', JSON.stringify(this._cart));
+  }
+
+  deleteFromCart = (id: number) => {
+    this._cart = this._cart.filter((cartItem) => cartItem.product.id !== id);
     sessionStorage.setItem('cart', JSON.stringify(this._cart));
   }
 

@@ -44,6 +44,7 @@
   color: #FFFFFF;
   padding: 22px 12px;
   width: 100%;
+  cursor: pointer;
 }
 
 .total {

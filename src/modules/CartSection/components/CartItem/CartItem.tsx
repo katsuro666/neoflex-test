@@ -7,49 +7,57 @@ import { CartItemFields } from 'store/Cart.types'
 
 export function CartItemProto(item: DataItem) {
 
-  const {cartArray, setQuantity} = CartStoreInstance
+  const {cartArray, setQuantity, deleteFromCart} = CartStoreInstance
 
   const currentItem = cartArray.find((el) => el.product.id === item.id) as CartItemFields
 
-  const addToCart = () => {
+  const addItem = () => {
     setQuantity(currentItem.quantity + 1, currentItem.product.id)
   }
 
-  const removeFromCart = () => {
+  const removeItem = () => {
     if (currentItem.quantity > 0) {
       setQuantity(currentItem.quantity - 1, item.id)
     }
   }
 
   const isDisabled = () => {
-    return currentItem.quantity === 0
+    if (currentItem) {
+      return currentItem.quantity === 0
+    }
+  }
+
+  const deleteItemFromCart = () => {
+    deleteFromCart(item.id)
   }
 
 
   return (
-    <div className={styles.cartItem}>
-      <div>
-        <img className={styles.img} src={item.img} alt={item.title} />
-        <div className={styles.controllers}>
-          <button className={styles.minus} onClick={removeFromCart} disabled={isDisabled()} >-</button>
-          <span className={styles.count}>
-            {currentItem.quantity}
-          </span>
-          <button className={styles.plus} onClick={addToCart}>+</button>
+    currentItem ? (
+      <div className={styles.cartItem}>
+        <div>
+          <img className={styles.img} src={item.img} alt={item.title} />
+          <div className={styles.controllers}>
+            <button className={styles.minus} onClick={removeItem} disabled={isDisabled()} >-</button>
+            <span className={styles.count}>
+              {currentItem?.quantity}
+            </span>
+            <button className={styles.plus} onClick={addItem}>+</button>
+          </div>
         </div>
-      </div>
 
-      <div className={styles.descSection}>
-        <div className={styles.desc}>
-          <h4 className={styles.title}>{item.title}</h4>
-          <p className={styles.addPrice}>{`${item.price} ${item.currency}`}</p>
+        <div className={styles.descSection}>
+          <div className={styles.desc}>
+            <h4 className={styles.title}>{item.title}</h4>
+            <p className={styles.addPrice}>{`${item.price} ${item.currency}`}</p>
+          </div>
+          <p className={styles.price}>{item.price}</p>
+          <button className={styles.remove} onClick={deleteItemFromCart}>
+            <img src="/assets/icons/remove.png" alt="" />
+          </button>
         </div>
-        <p className={styles.price}>{item.price}</p>
-        <button className={styles.remove}>
-          <img src="/assets/icons/remove.png" alt="" />
-        </button>
       </div>
-    </div>
+    ) : null
   )
 }
 
