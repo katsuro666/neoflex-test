@@ -49,9 +49,9 @@ export function CartItemProto(item: DataItem) {
         <div className={styles.descSection}>
           <div className={styles.desc}>
             <h4 className={styles.title}>{item.title}</h4>
-            <p className={styles.addPrice}>{`${item.price} ${item.currency}`}</p>
+            <p className={styles.addPrice}>{`${item.price.toLocaleString('ru')} ${item.currency}`}</p>
           </div>
-          <p className={styles.price}>{item.price}</p>
+          <p className={styles.price}>{`${item.price.toLocaleString('ru')} ${item.currency}`}</p>
           <button className={styles.remove} onClick={deleteItemFromCart}>
             <img src="/assets/icons/remove.png" alt="" />
           </button>
