@@ -1,25 +1,33 @@
 import React from 'react'
+import { observer } from 'mobx-react'
+import { CartStoreInstance } from 'store'
 import styles from './CartItem.module.css'
-import { CartItemProps } from './CartItem.types'
+import { DataItem } from 'data/data.types'
+import { CartItemFields } from 'store/Cart.types'
 
-export function CartItem({item}: CartItemProps) {
+export function CartItemProto(props: DataItem) {
+  const item = CartStoreInstance.showCart.find((el) => el.product.id === props.id) as CartItemFields
+
+
   return (
     <div className={styles.cartItem}>
       <div>
-        <img className={styles.img} src={item.img} alt={item.title} />
+        <img className={styles.img} src={props.img} alt={props.title} />
         <div className={styles.controllers}>
           <button className={styles.minus}>-</button>
-          <span className={styles.count}>1</span>
+          <span className={styles.count}>
+            {item.quantity}
+          </span>
           <button className={styles.plus}>+</button>
         </div>
       </div>
 
       <div className={styles.descSection}>
         <div className={styles.desc}>
-          <h4 className={styles.title}>{item.title}</h4>
-          <p className={styles.addPrice}>{`${item.price} ${item.currency}`}</p>
+          <h4 className={styles.title}>{props.title}</h4>
+          <p className={styles.addPrice}>{`${props.price} ${props.currency}`}</p>
         </div>
-        <p className={styles.price}>{item.price}</p>
+        <p className={styles.price}>{props.price}</p>
         <button className={styles.remove}>
           <img src="/assets/icons/remove.png" alt="" />
         </button>
@@ -27,3 +35,5 @@ export function CartItem({item}: CartItemProps) {
     </div>
   )
 }
+
+export const CartItem = observer(CartItemProto)
