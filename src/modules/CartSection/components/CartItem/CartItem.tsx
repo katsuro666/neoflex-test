@@ -5,29 +5,46 @@ import styles from './CartItem.module.css'
 import { DataItem } from 'data/data.types'
 import { CartItemFields } from 'store/Cart.types'
 
-export function CartItemProto(props: DataItem) {
-  const item = CartStoreInstance.showCart.find((el) => el.product.id === props.id) as CartItemFields
+export function CartItemProto(item: DataItem) {
+
+  const {cartArray, setQuantity} = CartStoreInstance
+
+  const currentItem = cartArray.find((el) => el.product.id === item.id) as CartItemFields
+
+  const addToCart = () => {
+    setQuantity(currentItem.quantity + 1, currentItem.product.id)
+  }
+
+  const removeFromCart = () => {
+    if (currentItem.quantity > 0) {
+      setQuantity(currentItem.quantity - 1, item.id)
+    }
+  }
+
+  const isDisabled = () => {
+    return currentItem.quantity === 0
+  }
 
 
   return (
     <div className={styles.cartItem}>
       <div>
-        <img className={styles.img} src={props.img} alt={props.title} />
+        <img className={styles.img} src={item.img} alt={item.title} />
         <div className={styles.controllers}>
-          <button className={styles.minus}>-</button>
+          <button className={styles.minus} onClick={removeFromCart} disabled={isDisabled()} >-</button>
           <span className={styles.count}>
-            {item.quantity}
+            {currentItem.quantity}
           </span>
-          <button className={styles.plus}>+</button>
+          <button className={styles.plus} onClick={addToCart}>+</button>
         </div>
       </div>
 
       <div className={styles.descSection}>
         <div className={styles.desc}>
-          <h4 className={styles.title}>{props.title}</h4>
-          <p className={styles.addPrice}>{`${props.price} ${props.currency}`}</p>
+          <h4 className={styles.title}>{item.title}</h4>
+          <p className={styles.addPrice}>{`${item.price} ${item.currency}`}</p>
         </div>
-        <p className={styles.price}>{props.price}</p>
+        <p className={styles.price}>{item.price}</p>
         <button className={styles.remove}>
           <img src="/assets/icons/remove.png" alt="" />
         </button>

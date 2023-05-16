@@ -4,14 +4,17 @@ import styles from './CartSection.module.css'
 import { CartItem } from './components/CartItem'
 
 export function CartSection() {
+
+  const { cartArray } = CartStoreInstance
+
   return (
     <>
       <h2 className={styles.header}>Корзина</h2> 
       <div className={styles.cart}>
-          {CartStoreInstance.showCart.length > 0 ? (
+          {cartArray.length > 0 ? (
             <>
             <div className={styles.items}>
-            {CartStoreInstance.showCart.map((item) => (
+            {cartArray.map((item) => (
               <CartItem 
                 key={item.product.id} 
                 img={item.product.img} 

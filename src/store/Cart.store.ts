@@ -1,5 +1,5 @@
 import { DataItem } from "data/data.types";
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
 import { CartItemFields } from "./Cart.types";
 
 export class CartStore {
@@ -9,7 +9,7 @@ export class CartStore {
 
   private _cart: CartItemFields[] = [];
   
-  get showCart() {
+  get cartArray() {
     return this._cart;
   }
 
@@ -24,6 +24,13 @@ export class CartStore {
         ...item
       }
     })
+    }
+  }
+
+  setQuantity = (quantity: number, id: number) => {
+    const index = this._cart.findIndex((cartItem) => cartItem.product.id === id);
+    if (index >= 0) {
+      this._cart[index].quantity = quantity;
     }
   }
 }

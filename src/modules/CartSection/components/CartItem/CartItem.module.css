@@ -30,6 +30,11 @@
   cursor: pointer;
 }
 
+.minus:disabled, .plus:disabled {
+  cursor: auto;
+  background: #bbbbbb;
+}
+
 .count {
   font-weight: 600;
   font-size: 17px;

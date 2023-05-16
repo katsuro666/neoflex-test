@@ -10,7 +10,7 @@ import { PATH_LIST } from 'constants/index'
 function HeaderProto() {
 
   let cartCount = 0 
-  CartStoreInstance.showCart.forEach(item => cartCount += item.quantity)
+  CartStoreInstance.cartArray.forEach(item => cartCount += item.quantity)
   return (
     <header className={styles.header}>
       <Link to={PATH_LIST.ROOT} style={{ textDecoration: 'none' }}>
