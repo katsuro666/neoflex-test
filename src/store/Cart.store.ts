@@ -1,5 +1,5 @@
 import { DataItem } from "data/data.types";
-import { makeAutoObservable, toJS } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { CartItemFields } from "./Cart.types";
 
 export class CartStore {
@@ -7,7 +7,7 @@ export class CartStore {
     makeAutoObservable(this);
   }
 
-  private _cart: CartItemFields[] = [];
+  private _cart: CartItemFields[] = JSON.parse(sessionStorage.getItem("cart") || "[]");
   
   get cartArray() {
     return this._cart;
@@ -25,6 +25,7 @@ export class CartStore {
       }
     })
     }
+    sessionStorage.setItem('cart', JSON.stringify(this._cart));
   }
 
   setQuantity = (quantity: number, id: number) => {
