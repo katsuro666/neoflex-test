@@ -9,7 +9,6 @@ export function CartSectionProto() {
   const { cartArray } = CartStoreInstance
 
   const total = cartArray.reduce((acc, item) => acc + item.product.price * item.quantity, 0).toLocaleString('ru')
-  const currency = cartArray[0].product.currency
 
   return (
     <>
@@ -33,9 +32,9 @@ export function CartSectionProto() {
             <div className={styles.checkout}>
             <div className={styles.total}>
               <p>Итого</p>
-              <p>{`${currency} ${total}`}</p>
+              <p>{`${cartArray[0].product.currency} ${total}`}</p>
             </div>
-            <button className={styles.button} onClick={() => alert(`Ваш заказ на ${total} ${currency} оформлен`)}>Перейти к оформлению</button>
+            <button className={styles.button} onClick={() => alert(`Ваш заказ на ${total} ${cartArray[0].product.currency} оформлен`)}>Перейти к оформлению</button>
           </div>
           </>
               
